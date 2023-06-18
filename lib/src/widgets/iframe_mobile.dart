@@ -1,11 +1,9 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/html_parser.dart';
 import 'package:flutter_html/src/replaced_element.dart';
 import 'package:flutter_html/style.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:webview_flutter/webview_flutter.dart';
 
 /// [IframeContentElement is a [ReplacedElement] with web content.
 class IframeContentElement extends ReplacedElement {
@@ -27,20 +25,6 @@ class IframeContentElement extends ReplacedElement {
   @override
   Widget toWidget(RenderContext context) {
     final sandboxMode = attributes["sandbox"];
-    return Container(
-      width: width ?? (height ?? 150) * 2,
-      height: height ?? (width ?? 300) / 2,
-      child: WebView(
-        initialUrl: src,
-        key: key,
-        javascriptMode: sandboxMode == null || sandboxMode == "allow-scripts"
-            ? JavascriptMode.unrestricted
-            : JavascriptMode.disabled,
-        navigationDelegate: navigationDelegate,
-        gestureRecognizers: {
-          Factory<VerticalDragGestureRecognizer>(() => VerticalDragGestureRecognizer())
-        },
-      ),
-    );
+    return Container();
   }
 }
